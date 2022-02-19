@@ -3,7 +3,7 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
-  const [animalInput, setAnimalInput] = useState("");
+  const [weaponInput, setWeaponInput] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
@@ -13,11 +13,11 @@ export default function Home() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ animal: animalInput }),
+      body: JSON.stringify({ weapon: weaponInput }),
     });
     const data = await response.json();
     setResult(data.result);
-    setAnimalInput("");
+    setWeaponInput("");
   }
 
   return (
@@ -33,10 +33,10 @@ export default function Home() {
         <form onSubmit={onSubmit}>
           <input
             type="text"
-            name="animal"
-            placeholder="Enter a car"
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
+            name="weapon"
+            placeholder="Enter a weapon"
+            value={weaponInput}
+            onChange={(e) => setWeaponInput(e.target.value)}
           />
           <input type="submit" value="Generate names" />
         </form>
